@@ -3,30 +3,45 @@ using Inputs;
 
 namespace Online_store
 {
-    public class StoreManager
+    public class StoreManager : Store
     {
-        internal void ShowItem(Store item)
+        internal StoreManager() { }
+
+        internal StoreManager(int ID, string name, int price, int count)
         {
-            Console.WriteLine($"ID: {item._ID}");
-            Console.WriteLine($"Name: {item._name}");
-            Console.WriteLine($"Count: {item._count}");
-            Console.WriteLine($"Price: {item._price}$ per item");
-            Console.WriteLine($"Total cost: {item.ItemCost(item)}$");
+            _ID = ID;
+            _name = name;
+            _price = price;
+            _count = count;
         }
 
-        internal void InputItem(Store item)
+        internal StoreManager(int ID)
+        {
+            _ID = ID;
+        }
+
+        internal void ShowItem()
+        {
+            Console.WriteLine($"ID: {_ID}");
+            Console.WriteLine($"Name: {_name}");
+            Console.WriteLine($"Count: {_count}");
+            Console.WriteLine($"Price: {_price}$ per item");
+            Console.WriteLine($"Total cost: {CalculateCost()}$");
+        }
+
+        internal void InputItem()
         {
             Console.Write($"Name: ");
-            item._name = Console.ReadLine();
+            _name = Console.ReadLine();
             Console.Write($"Count: ");
-            item._count = Input.Integer();
+            _count = Input.Integer();
             Console.Write($"Price ($ per item): ");
-            item._price = Input.Integer();
+            _price = Input.Integer();
         }
 
-        internal int ItemCost(Store item)
+        internal int CalculateCost()
         {
-            return item._price * item._count; 
+            return _price * _count; 
         }
     }
 }

@@ -6,10 +6,10 @@ namespace Online_store
 {
     public class MainMenu
     {
-        public static void Menu(ArrayList items)
+        public static void Menu(ArrayList products)
         {
             //a variable for assigning item ID
-            int ID = 0;
+            int idAssignment = 0;
             do
             {
                 Console.WriteLine("Menu: ");
@@ -29,48 +29,45 @@ namespace Online_store
                 {
                     case MenuPoints.Add:
                         {
-                            ID++;
-                            Store item = new Store(ID);
-                            item.InputItem(item);
-                            items.Add(item);
-                            Continue.Clear();
+                            idAssignment++;
+                            StoreManager product = new StoreManager(idAssignment);
+                            product.InputItem();
+                            products.Add(product);
                             break;
                         }
                     case MenuPoints.Show:
                         {
-                            if (items.Count == 0)
+                            if (products.Count == 0)
                             {
                                 Console.WriteLine("List is empty!");
                             }
-                            else foreach (Store item in items)
+                            else foreach (StoreManager item in products)
                             {
-                                item.ShowItem(item);
+                                item.ShowItem();
                             }
-                            Continue.Clear();
                             break;
                         }
                     case MenuPoints.Cost:
                         {
-                            if (items.Count == 0)
+                            if (products.Count == 0)
                             {
                                 Console.WriteLine("List is empty!");
                             }
                             else 
                             {
                                 int cost = 0;
-                                for (int i = 0; i < items.Count; i++)
+                                for (int i = 0; i < products.Count; i++)
                                 {
-                                    Store item = (Store)items[i];
-                                    cost += item.ItemCost(item);
+                                    StoreManager product = (StoreManager)products[i];
+                                    cost += product.CalculateCost();
                                 }
                                 Console.WriteLine($"Total cost: {cost}$");
                             }
-                            Continue.Clear();
                             break;
                         }
                     case MenuPoints.DeleteOne:
                         {
-                            if (items.Count == 0)
+                            if (products.Count == 0)
                             {
                                 Console.WriteLine("List is empty!");
                             }
@@ -78,32 +75,30 @@ namespace Online_store
                             {
                                 Console.WriteLine("Input an element number that you want to delete");
                                 int delIndex = Input.Integer() - 1;
-                                items.RemoveAt(delIndex);
+                                products.RemoveAt(delIndex);
                                 
                                 //Aftere deletion we move left all remaining ID
-                                for (int i = delIndex; i < items.Count; i++)
+                                for (int i = delIndex; i < products.Count; i++)
                                 {
-                                    Store temp = (Store)items[i];
-                                    temp._ID = i + 1;
+                                    StoreManager product = (StoreManager)products[i];
+                                    product._ID = i + 1;
                                 }
-                                ID--;
+                                idAssignment--;
                             }
-                            Continue.Clear();
                             break;
                         }
                     case MenuPoints.DeleteAll:
                         {
-                            if (items.Count == 0)
+                            if (products.Count == 0)
                             {
                                 Console.WriteLine("List is empty!");
                             }
                             else
                             {
-                                items.Clear();
-                                ID = 0;
+                                products.Clear();
+                                idAssignment = 0;
                             }
                             Console.WriteLine("Operation complete!");
-                            Continue.Clear();
                             break;
                         }
                     default:
@@ -112,6 +107,7 @@ namespace Online_store
                             break;
                         }
                 }
+                Pause.ContinueAndClear();
             } while (true);
         }
 

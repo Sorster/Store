@@ -9,13 +9,12 @@ namespace Online_store
     {
         static void Main(string[] args)
         {
-            ArrayList items = new ArrayList();
-            MainMenu.Menu(items);
+            ArrayList products = new ArrayList();
+            MainMenu.Menu(products);
 
-            string configurationVariable = ConfigurationManager.AppSettings.Get("Key0");
-            Console.WriteLine($"Pi = {configurationVariable}");
-            Console.WriteLine("Enter any key to exit the program...");
-            Console.ReadKey();
+            string configurationParameter = ConfigurationManager.AppSettings.Get("Key0");
+            Console.WriteLine($"Pi = {configurationParameter}");
+            Pause.ContinueAndClear();
         }
     }
 }

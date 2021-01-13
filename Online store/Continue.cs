@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Online_store
 {
-    public class Continue
+    public class Pause
     {
-        public static void Clear()
+        public static void ContinueAndClear()
         {
             Console.WriteLine("Inpur any key to continue the program...");
             Console.ReadKey();
