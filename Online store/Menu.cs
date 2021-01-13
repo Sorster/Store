@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Inputs;
+using static Inputs.Input;
 
 namespace Online_store
 {
@@ -20,7 +20,7 @@ namespace Online_store
                 Console.WriteLine("5 - Delete all items");
                 Console.WriteLine("6 - Exit");
                 Console.Write("Command: ");
-                int choice = Input.Integer();
+                int choice = Integer();
                 Console.Clear();
 
                 if (choice == 6) break;
@@ -74,7 +74,7 @@ namespace Online_store
                             else
                             {
                                 Console.WriteLine("Input an element number that you want to delete");
-                                int delIndex = Input.Integer() - 1;
+                                int delIndex = Integer() - 1;
                                 products.RemoveAt(delIndex);
                                 
                                 //Aftere deletion we move left all remaining ID

@@ -1,5 +1,5 @@
 ﻿using System;
-using Inputs;
+using static Inputs.Input;
 
 namespace Online_store
 {
@@ -34,9 +34,9 @@ namespace Online_store
             Console.Write($"Name: ");
             _name = Console.ReadLine();
             Console.Write($"Count: ");
-            _count = Input.Integer();
+            _count = Integer();
             Console.Write($"Price ($ per item): ");
-            _price = Input.Integer();
+            _price = Integer();
         }
 
         internal int CalculateCost()
