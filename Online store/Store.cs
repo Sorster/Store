@@ -4,9 +4,11 @@ namespace Online_store
 {
     public class Store
     {
-        internal int _ID { get; set; }
-        protected string _name { get; set; }
-        protected int _price { get; set; }
-        protected int _count { get; set; }
+        protected static int counter = 0;
+        protected int ID { get; set; }
+        protected string Name { get; set; }
+        protected int Price { get; set; }
+        protected int Count { get; set; }
+        protected int Cost { get; set; }
     }
 }

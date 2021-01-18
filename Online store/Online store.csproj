@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Continue.cs" />
-    <Compile Include="Menu.cs" />
+    <Compile Include="MainMenu.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,47 +1,78 @@
 ﻿using System;
-using static Inputs.Input;
+using System.Collections;
+using static Inputs.NumbersInput;
+using static Inputs.StringInput;
 
 namespace Online_store
 {
     public class StoreManager : Store
     {
-        internal StoreManager() { }
-
-        internal StoreManager(int ID, string name, int price, int count)
+        internal StoreManager(string name, int price, int count)
         {
-            _ID = ID;
-            _name = name;
-            _price = price;
-            _count = count;
+            counter++;
+            ID = counter;
+            Name = name;
+            Price = price;
+            Count = count;
+            Cost = Price * Count;
         }
 
-        internal StoreManager(int ID)
+        internal StoreManager()
         {
-            _ID = ID;
+            counter++;
+            ID = counter;
+        }
+
+        public static StoreManager operator +(StoreManager product1, StoreManager product2)
+        {
+            return new StoreManager { Count = product1.Count + product2.Count };
         }
 
         internal void ShowItem()
         {
-            Console.WriteLine($"ID: {_ID}");
-            Console.WriteLine($"Name: {_name}");
-            Console.WriteLine($"Count: {_count}");
-            Console.WriteLine($"Price: {_price}$ per item");
+            Console.WriteLine($"ID: {ID}");
+            Console.WriteLine($"Name: {Name}");
+            Console.WriteLine($"Count: {Count}");
+            Console.WriteLine($"Price: {Price}$ per item");
             Console.WriteLine($"Total cost: {CalculateCost()}$");
         }
 
         internal void InputItem()
         {
             Console.Write($"Name: ");
-            _name = Console.ReadLine();
+            Name = InputStringWithLettersOnly("Name");
             Console.Write($"Count: ");
-            _count = Integer();
+            Count = Integer("Count");
             Console.Write($"Price ($ per item): ");
-            _price = Integer();
+            Price = Integer("Price");
+        }
+
+        internal void Assigne_ID(int deleteItemIndex)
+        {
+            counter = deleteItemIndex;
+            ID = counter;
+        }
+
+        internal void Assigne_ID()
+        {
+            counter++;
+            ID = counter;           
+        }
+
+        internal void Drop_ID()
+        {
+            counter = 0;
         }
 
         internal int CalculateCost()
         {
-            return _price * _count; 
+            Cost = Price * Count;
+            return Cost; 
+        }
+
+        internal int ReturnCount()
+        {
+            return Count;
         }
     }
 }
