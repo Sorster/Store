@@ -7,6 +7,7 @@ namespace Online_store
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             ArrayList products = new ArrayList();
             MainMenu.Menu(products);
         }

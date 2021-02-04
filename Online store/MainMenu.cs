@@ -67,8 +67,10 @@ namespace Online_store
             Console.WriteLine("4 - Delete item");
             Console.WriteLine("5 - Delete all items");
             Console.WriteLine("6 - Exit");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("Command: ");
             choice = Integer("Command");
+            Console.ResetColor();
             Console.Clear();
         }
 
@@ -99,7 +101,7 @@ namespace Online_store
         {   
             foreach (StoreManager item in products)
             {
-                    item.ShowItem();
+                item.ShowItem();
             }
         }
 
@@ -120,7 +122,7 @@ namespace Online_store
         static void DeleteOneProduct(ArrayList products)
         {
             Console.WriteLine("Please input product ID which you want to delete ");
-            Console.Write("ID: ");
+            Console.Write("ID: "); 
             int deleteItemIndex = Integer("ID");
             products.RemoveAt(deleteItemIndex - 1);
 
